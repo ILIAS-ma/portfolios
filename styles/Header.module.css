@@ -1,0 +1,14 @@
+.header {
+  padding: 1rem;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}

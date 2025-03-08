@@ -25,10 +25,11 @@
     ],
     "paths": {
       "@/*": [
-        "./src/*"
+        "./*"
       ]
-    },
-    "forceConsistentCasingInFileNames": true
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "."
   },
   "include": [
     "next-env.d.ts",
