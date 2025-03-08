@@ -23,3 +23,11 @@
   text-align: center;
   font-size: 1.5rem;
 }
+
+.cardContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
