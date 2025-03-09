@@ -1,7 +1,6 @@
 // components/Card3D.tsx
 
 import React, { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import styles from '../styles/Card3D.module.css';
 
 interface Project {
@@ -14,17 +13,17 @@ const projects: Project[] = [
   {
     title: 'Projet 1',
     description: 'Description du Projet 1',
-    image: 'https://th.bing.com/th/id/OIP.V3nD0p-Bhf-TivgmJaYR0wHaEK?rs=1&pid=ImgDetMain',
+    image: 'https://via.placeholder.com/300x200?text=Projet+1',
   },
   {
     title: 'Projet 2',
     description: 'Description du Projet 2',
-    image: 'https://th.bing.com/th/id/OIP.IqH_Scclir84QAm86x2CLAHaE8?pid=ImgDet&w=206&h=137&c=7&dpr=1,1',
+    image: 'https://via.placeholder.com/300x200?text=Projet+2',
   },
   {
     title: 'Projet 3',
     description: 'Description du Projet 3',
-    image: 'https://th.bing.com/th/id/OIP.-bBWkxSIGl3a8VPxFeWOuwHaE8?w=221&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7',
+    image: 'https://via.placeholder.com/300x200?text=Projet+3',
   },
 ];
 
@@ -51,14 +50,18 @@ const Card3D: React.FC = () => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateY = ((x - centerX) / centerX) * 30;
-    const rotateX = -((y - centerY) / centerY) * 30;
+    const rotateY = ((x - centerX) / centerX) * 20;
+    const rotateX = -((y - centerY) / centerY) * 20;
+    
+    const distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+    const lift = Math.min(distance / Math.sqrt(centerX * centerX + centerY * centerY) * 10, 10);
     
     card.style.transform = `
       perspective(1000px) 
       rotateX(${rotateX}deg) 
       rotateY(${rotateY}deg) 
-      scale3d(1.1, 1.1, 1.1)
+      scale3d(1.05, 1.05, 1.05) 
+      translateZ(${lift}px)
     `;
     
     const shadowX = rotateY / 2;
@@ -79,7 +82,7 @@ const Card3D: React.FC = () => {
     const card = cardsRef.current[index];
     if (!card) return;
     
-    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateZ(0)';
     card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
     
     const glareElement = card.querySelector(`.${styles.cardGlare}`);
@@ -91,48 +94,26 @@ const Card3D: React.FC = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={styles.cardContainer}
-    >
-      <h1 className={styles.mainTitle}>Mes Projets</h1>
+    <div className={styles.cardContainer}>
       {projects.map((project, index) => (
-        <motion.div
-          ref={el => cardsRef.current[index] = el}
+        <div
           key={index}
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          whileHover={{ scale: 1.1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          className={styles.card}
+          ref={el => cardsRef.current[index] = el}
+          className={`${styles.card} ${activeIndex === index ? styles.active : ''}`}
           onMouseMove={e => handleMouseMove(e, index)}
           onMouseLeave={() => handleMouseLeave(index)}
         >
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={styles.cardContent}
-          >
+          <div className={styles.cardContent}>
             <img src={project.image} alt={project.title} className={styles.image} />
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={styles.cardInfo}
-            >
+            <div className={styles.cardInfo}>
               <h3 className={styles.cardTitle}>{project.title}</h3>
               <p className={styles.cardDescription}>{project.description}</p>
-            </motion.div>
+            </div>
             <div className={styles.cardGlare}></div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       ))}
-    </motion.div>
+    </div>
   );
 };
 

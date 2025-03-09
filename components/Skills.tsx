@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from '../styles/Skills.module.css';
+import AnimateOnScroll from './AnimateOnScroll';
 
 // Interface pour définir la structure d'une compétence
 interface Skill {
@@ -31,32 +32,49 @@ const skills: Skill[] = [
 const Skills: React.FC = () => {
   return (
     <div className={styles.skillsContainer}>
-      <h1>Compétences</h1>
+      <AnimateOnScroll animation="slideUp">
+        <h1>Compétences</h1>
+      </AnimateOnScroll>
+      
       <div className={styles.skillsCategories}>
-        <div className={styles.skillsBackend}>
-          <h2>Backend</h2>
-          <ul>
-            {skills.filter((skill) => skill.category === 'Backend').map((skill) => (
-              <li key={skill.name}>{skill.name}</li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.skillsFrontend}>
-          <h2>Frontend</h2>
-          <ul>
-            {skills.filter((skill) => ['Frontend', 'JS', 'CSS'].includes(skill.category)).map((skill) => (
-              <li key={skill.name}>{skill.name}</li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.skillsBackend}>
-          <h2>CMS</h2>
-          <ul>
-            {skills.filter((skill) => skill.category === 'CMS').map((skill) => (
-              <li key={skill.name}>{skill.name}</li>
-            ))}
-          </ul>
-        </div>
+        <AnimateOnScroll animation="slideRight" delay={0.2}>
+          <div className={styles.skillsBackend}>
+            <h2>Backend</h2>
+            <ul>
+              {skills.filter((skill) => skill.category === 'Backend').map((skill, index) => (
+                <AnimateOnScroll key={skill.name} animation="scale" delay={0.1 * index}>
+                  <li>{skill.name}</li>
+                </AnimateOnScroll>
+              ))}
+            </ul>
+          </div>
+        </AnimateOnScroll>
+        
+        <AnimateOnScroll animation="fadeIn" delay={0.3}>
+          <div className={styles.skillsFrontend}>
+            <h2>Frontend</h2>
+            <ul>
+              {skills.filter((skill) => ['Frontend', 'JS', 'CSS'].includes(skill.category)).map((skill, index) => (
+                <AnimateOnScroll key={skill.name} animation="scale" delay={0.1 * index}>
+                  <li>{skill.name}</li>
+                </AnimateOnScroll>
+              ))}
+            </ul>
+          </div>
+        </AnimateOnScroll>
+        
+        <AnimateOnScroll animation="slideLeft" delay={0.4}>
+          <div className={styles.skillsBackend}>
+            <h2>CMS</h2>
+            <ul>
+              {skills.filter((skill) => skill.category === 'CMS').map((skill, index) => (
+                <AnimateOnScroll key={skill.name} animation="scale" delay={0.1 * index}>
+                  <li>{skill.name}</li>
+                </AnimateOnScroll>
+              ))}
+            </ul>
+          </div>
+        </AnimateOnScroll>
       </div>
     </div>
   );

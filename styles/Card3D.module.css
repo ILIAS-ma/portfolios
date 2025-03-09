@@ -1,31 +1,45 @@
 .cardContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
-  perspective: 1000px;
-  background-color: #ffffff;
-  padding: 40px;
-  gap: 40px; /* Added gap for consistent spacing */
-}
-
-.mainTitle {
-  width: 100%;
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #333;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 20px;
+  perspective: 2000px;
+  background-color: transparent;
 }
 
 .card {
   position: relative;
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   height: 400px;
-  border-radius: 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
   transform-style: preserve-3d;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform: perspective(1000px);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  margin: 0; /* Removed margin as we're using gap */
+  background-color: #fff;
+  will-change: transform, box-shadow;
+  margin: 0 10px;
+  animation: randomMove 15s infinite alternate ease-in-out;
+}
+
+/* Animation aléatoire pour chaque carte */
+.card:nth-child(1) {
+  animation-delay: 0s;
+  animation-duration: 13s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 1s;
+  animation-duration: 17s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 2s;
+  animation-duration: 15s;
 }
 
 .cardContent {
@@ -34,34 +48,7 @@
   height: 100%;
   backface-visibility: hidden;
   border-radius: 10px;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.cardInfo {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 0 0 10px 10px;
-}
-
-.cardTitle {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.cardDescription {
-  font-size: 14px;
-  color: #666;
+  transform-style: preserve-3d; /* Ajout pour améliorer l'effet 3D */
 }
 
 .cardGlare {
@@ -70,9 +57,75 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  pointer-events: none;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+  border-radius: 10px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transform: translateZ(20px);
+  transform-style: preserve-3d;
+}
+
+.cardInfo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(240, 240, 240, 0.9);
+  border-radius: 0 0 10px 10px;
+  transform: translateZ(30px); /* Effet de profondeur restauré */
+  transform-style: preserve-3d;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  transform: translateZ(40px); /* Effet de profondeur restauré */
+}
+
+.cardDescription {
+  font-size: 14px;
+  color: #666;
+  transform: translateZ(30px); /* Effet de profondeur restauré */
+}
+
+.card.active {
+  z-index: 10;
+}
+
+/* Amélioration de l'effet de survol avec mouvement multi-directionnel */
+.card:hover {
+  animation: none; /* Arrête l'animation aléatoire en survol */
+  transform: perspective(1000px) rotateX(5deg) rotateY(10deg) scale3d(1.05, 1.05, 1.05) translateZ(30px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .cardContent {
+  animation: wobble 3s infinite alternate ease-in-out;
+}
+
+@keyframes wobble {
+  0% { transform: translateZ(20px) translateY(0) rotateX(0deg); }
+  25% { transform: translateZ(30px) translateY(-5px) rotateX(2deg); }
+  50% { transform: translateZ(40px) translateY(0) rotateX(-2deg); }
+  75% { transform: translateZ(30px) translateY(5px) rotateX(1deg); }
+  100% { transform: translateZ(20px) translateY(0) rotateX(0deg); }
+}
+
+/* Effet sur les autres cartes lorsqu'une carte est survolée */
+.cardContainer:hover .card:not(:hover) {
+  transform: scale(0.95) translateZ(-20px) rotateY(-5deg);
+  filter: brightness(0.8) blur(1px);
 }
 
 @media (max-width: 1200px) {
@@ -83,7 +136,8 @@
 
 @media (max-width: 768px) {
   .cardContainer {
-    gap: 20px; /* Further reduced gap for smaller screens */
+    flex-direction: column;
+    gap: 20px;
     padding: 20px;
   }
   
@@ -110,4 +164,28 @@
     max-width: 100%;
     height: 300px;
   }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) perspective(1000px) rotateX(3deg) rotateY(5deg) translateZ(20px);
+  }
+  25% {
+    transform: translateY(-10px) perspective(1000px) rotateX(5deg) rotateY(10deg) translateZ(30px);
+  }
+  50% {
+    transform: translateY(-5px) perspective(1000px) rotateX(-2deg) rotateY(15deg) translateZ(40px);
+  }
+  75% {
+    transform: translateY(-15px) perspective(1000px) rotateX(7deg) rotateY(5deg) translateZ(30px);
+  }
+}
+
+@keyframes randomMove {
+  0% { transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) translateZ(0) translateY(0); }
+  20% { transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) translateZ(10px) translateY(-5px); }
+  40% { transform: perspective(1000px) rotateX(3deg) rotateY(1deg) translateZ(5px) translateY(5px); }
+  60% { transform: perspective(1000px) rotateX(-1deg) rotateY(-2deg) translateZ(15px) translateY(-10px); }
+  80% { transform: perspective(1000px) rotateX(0deg) rotateY(3deg) translateZ(5px) translateY(5px); }
+  100% { transform: perspective(1000px) rotateX(2deg) rotateY(-1deg) translateZ(10px) translateY(0); }
 }

@@ -73,3 +73,88 @@ a {
   align-items: center;
   text-align: center;
 }
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-transition {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+}
+
+.section-transition::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #000);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Ajout pour la disposition des projets */
+.projectsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 20px;
+  padding: 20px 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Styles pour la disposition des cartes de projet */
+.w-80 {
+  width: 20rem; /* 320px */
+}
+
+.flex-none {
+  flex-shrink: 0;
+}
+
+/* Style pour le conteneur de projets sur mobile */
+@media (max-width: 768px) {
+  .projectsContainer {
+    flex-wrap: wrap;
+  }
+  
+  .flex.space-x-8 {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .flex.space-x-8 > div {
+    scroll-snap-align: center;
+  }
+}
