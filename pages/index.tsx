@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import Timeline from '../components/Timeline';
 import Acceuil from '../components/Acceuil';
 import NavBar from '../components/nav-bar';
+import Footer from '@/components/footer';
 
 export default function HomePage() {
   return (
@@ -72,6 +73,7 @@ export default function HomePage() {
           </section>
         </main>
       </motion.div>
+      <Footer />
     </div>
   );
 }
