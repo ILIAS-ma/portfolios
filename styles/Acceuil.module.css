@@ -92,12 +92,15 @@
     text-align: center;
     overflow: hidden;
     background-color: #fff;
+    margin-top: 50px;  /* Margin réduit pour un meilleur affichage */
+    padding: 0 20px;  /* Ajout de padding horizontal */
   }
   
   .content {
     position: relative;
-    padding: 0 2rem;
+    padding: 0 1rem;
     max-width: 800px;
+    width: 100%;  /* Assure que le contenu prend toute la largeur disponible */
   }
   
   .header {
@@ -230,10 +233,11 @@
   @media (max-width: 1024px) {
     .acceuilSection {
       height: auto;
-      padding: 2rem 0;
+      min-height: 100vh;  /* Assure une hauteur minimale */
+      padding: 60px 20px;  /* Padding vertical augmenté */
     }
     .content {
-      padding: 0 1rem;
+      width: 100%;
     }
     .header {
       margin-bottom: 1rem;
@@ -256,43 +260,51 @@
       align-items: center;
     }
     .acceuilSection {
-      padding: 1rem 0;
+      padding: 60px 15px;  /* Padding ajusté */
     }
     .content {
-      padding: 0 0.5rem;
+      width: 100%;
+      padding: 0;
     }
     .header {
       margin-bottom: 0.5rem;
     }
     .title {
       font-size: 2rem;
+      margin-left: auto;
+      margin-right: auto;
     }
     .subtitle {
       font-size: 1.2rem;
+      margin-left: auto;
+      margin-right: auto;
     }
     .description {
-      font-size: 0.8rem;
+      font-size: 1rem;
+      width: 100%;
     }
   }
   
   @media (max-width: 480px) {
     .acceuilSection {
-      padding: 0.5rem 0;
+      padding: 50px 10px;
     }
     .content {
-      padding: 0 0.2rem;
+      width: 100%;
     }
     .header {
       margin-bottom: 0.2rem;
     }
     .title {
       font-size: 1.5rem;
+      width: 100%;
     }
     .subtitle {
       font-size: 1rem;
+      width: 100%;
     }
     .description {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
+      width: 100%;
     }
   }
-  

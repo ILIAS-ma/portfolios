@@ -139,6 +139,7 @@
 @media (max-width: 768px) {
   .cardContainer {
     flex-direction: column;
+    align-items: center;  /* Centrer les cartes */
     gap: 20px;
     padding: 20px;
   }
@@ -146,25 +147,30 @@
   .card {
     max-width: 280px;
     height: 350px;
+    margin: 0 auto 20px;  /* Centrer avec marge inférieure */
   }
   
   .cardTitle {
     font-size: 16px;
+    text-align: center;
   }
   
   .cardDescription {
     font-size: 12px;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   .cardContainer {
     gap: 15px; /* Minimal gap for very small screens */
+    padding: 15px 5px;
   }
   
   .card {
-    max-width: 100%;
+    max-width: 90%;
     height: 300px;
+    margin: 0 auto 15px;
   }
 }
 

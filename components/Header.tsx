@@ -47,7 +47,7 @@ export default function Header() {
           whileHover={{ scale: 1.05 }}
           className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"
         >
-          Portfolio
+          Mon Portefeuille {/* Changez ici */}
         </motion.div>
         <nav className="hidden md:block">
           <ul className="flex space-x-8">

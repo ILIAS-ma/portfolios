@@ -1,70 +1,90 @@
 .skillsContainer {
-    display: flex;
-    flex-direction: column;
-    margin-left: 250px;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .skillsTitle {
-    color: #000000;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-right: 280px;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .skillsCategories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Toujours centré */
+  padding: 20px;
+  margin-left: 250px;
+}
+
+.skillsTitle {
+  color: #000000;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;  /* Toujours centré */
+}
+
+.skillsCategories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.skillsBackend, .skillsFrontend, .skillsCss, .skillsJs, .skillsPhp, .skillsPython, .skillsHtml {
+  padding: 20px;
+  color: #000000;
+}
+
+.skillsBackend ul, .skillsFrontend ul, .skillsCss ul, .skillsJs ul, .skillsPhp ul, .skillsPython ul, .skillsHtml ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skillsBackend li, .skillsFrontend li, .skillsCss li, .skillsJs li, .skillsPhp li, .skillsPython li, .skillsHtml li {
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  .skillsContainer {
+    margin-left: 0;  /* Suppression des marges pour un meilleur centrage */
     width: 100%;
   }
-  
-  .skillsBackend, .skillsFrontend, .skillsCss, .skillsJs, .skillsPhp, .skillsPython, .skillsHtml {
-    padding: 20px;
-    color: #000000;
+}
+
+@media (max-width: 768px) {
+  .skillsContainer {
+    margin-left: 0;  /* Suppression des marges pour un meilleur centrage */
+    width: 100%;
+    padding: 20px 10px;
   }
-  
-  .skillsBackend ul, .skillsFrontend ul, .skillsCss ul, .skillsJs ul, .skillsPhp ul, .skillsPython ul, .skillsHtml ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  .skillsCategories {
+    flex-direction: column;
+    align-items: center;  /* Centrage des catégories */
+    width: 100%;
   }
-  
-  .skillsBackend li, .skillsFrontend li, .skillsCss li, .skillsJs li, .skillsPhp li, .skillsPython li, .skillsHtml li {
+  .skillsTitle {
+    margin-right: 0;  /* Suppression de la marge droite */
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillsContainer {
+    margin-left: 0;
+    width: 100%;
     padding: 10px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: #000000;
-    font-size: 14px;
   }
-  
-  @media (max-width: 1024px) {
-    .skillsContainer {
-      margin-left: 150px;
-    }
+  .skillsTitle {
+    margin-right: 0;
+    font-size: 2rem;  /* Titre plus petit sur très petits écrans */
   }
-  
-  @media (max-width: 768px) {
-    .skillsContainer {
-      margin-left: 50px;
-    }
-    .skillsCategories {
-      flex-direction: column;
-    }
+  .skillsCategories {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
-  
-  @media (max-width: 480px) {
-    .skillsContainer {
-      margin-left: 0px;
-    }
-    .skillsCategories {
-      flex-direction: column;
-    }
+  .skillsBackend, .skillsFrontend {
+    width: 100%;  /* Largeur complète pour un meilleur affichage */
+    padding: 10px;
   }
+}

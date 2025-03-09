@@ -13,8 +13,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen w-full bg-black text-white">
       <Head>
-        <title>Mon Portefeuille</title>
-        <meta name="description" content="Bienvenue sur mon portefeuille" />
+        <title>Ilias-Bounabat</title>
+        <meta name="description" content="Bienvenue sur mon portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       

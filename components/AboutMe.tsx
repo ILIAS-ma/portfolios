@@ -30,7 +30,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ title, description, image }) => {
           </AnimateOnScroll>
           <AnimateOnScroll animation="slideLeft" delay={0.4}>
             <div className={`${styles.image}`}>
-              <img src={image} alt="À propos de moi" />
+              <img src={image} alt="À propos de moi" style={{ marginTop: '20px' }} />
             </div>
           </AnimateOnScroll>
         </div>
