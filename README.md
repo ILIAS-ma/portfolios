@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+README - Mon Projet Web
 
-## Getting Started
+Ilias Bounabat
 
-First, run the development server:
+Site Déployé
 
-```bash
+Le site est accessible à l'adresse suivante : 
+
+Installation et Lancement en Local
+
+Prérequis
+
+Node.js (version recommandée : 16.x ou 18.x)
+
+npm ou yarn
+
+Git
+
+Étapes d'installation
+
+Cloner le dépôt Git
+
+git clone https://github.com/yoanncoualan/nom-du-repo.git
+
+Accéder au dossier du projet
+
+cd nom-du-repo
+
+Installer les dépendances
+
+npm install
+# ou
+yarn install
+
+Configurer les variables d'environnement
+
+Créer un fichier .env.local à la racine du projet
+
+Ajouter les variables nécessaires (voir section ci-dessous)
+
+Lancer le serveur local
+
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Accéder au site
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ouvrir http://localhost:3000 dans votre navigateur
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Configuration des Variables d'Environnement
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Technologies utilisées
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.js / React
 
-## Deploy on Vercel
+Tailwind CSS
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Vercel (pour le déploiement)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+Si vous avez des questions, n'hésitez pas à me contacter via GitHub ou email : bounabatilias2004@gmail.com
