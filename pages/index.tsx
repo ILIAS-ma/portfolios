@@ -9,6 +9,7 @@ import Timeline from '../components/Timeline';
 import Acceuil from '../components/Acceuil';
 import NavBar from '../components/nav-bar';
 import Footer from '@/components/footer';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -33,7 +34,7 @@ export default function HomePage() {
         <section id="about">
           <AboutMe 
             title="À propos de moi" 
-            description="Je suis un développeur passionné par la création d'applications web performantes et esthétiques. Avec plusieurs années d'expérience dans le développement front-end et back-end, je m'efforce de créer des solutions innovantes qui répondent aux besoins des utilisateurs. Ma passion pour l'apprentissage continu me pousse à me tenir au courant des dernières technologies et tendances dans le domaine du développement web." 
+            description="Je suis actuellement étudiant en deuxième année à l'IIM Digital School en développement web full stack. Je suis un développeur passionné par la création d'applications web performantes et esthétiques. Avec une solide base en développement front-end et back-end, je m'efforce de créer des solutions innovantes qui répondent aux besoins des utilisateurs. Ma passion pour l'apprentissage continu me pousse à me tenir au courant des dernières technologies et tendances dans le domaine du développement web." 
             image="https://img.freepik.com/premium-vector/person-working-computer-vector-art-illustration-black-color-silhouette-8_666870-1242.jpg" 
           />
         </section>
@@ -74,6 +75,11 @@ export default function HomePage() {
         </main>
       </motion.div>
       <Footer />
+      <div className="text-center mt-4">
+        <Link href="/non-existent-page" legacyBehavior>
+          <a className="text-blue-500 underline">Test Page 404</a>
+        </Link>
+      </div>
     </div>
   );
 }

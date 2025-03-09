@@ -4,7 +4,7 @@ import { projects } from '../../data/projectsData';
 import styles from '../../styles/Project.module.css';
 import NavBar from '../../components/nav-bar';
 import Footer from '../../components/footer';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Project: React.FC = () => {
   const router = useRouter();
@@ -30,12 +30,21 @@ const Project: React.FC = () => {
             <p>{project.details}</p>
           </div>
           <div className={styles.links}>
-            <a href="https://github.com/ILIAS-ma" target="_blank" rel="noopener noreferrer" className={styles.link}>
-              <FaGithub /> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/ilias-bounabat/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-              <FaLinkedin /> LinkedIn
-            </a>
+            {project.githubUrl && (
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                <FaGithub /> GitHub
+              </a>
+            )}
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                <FaExternalLinkAlt /> Live Demo
+              </a>
+            )}
+            {project.linkedinUrl && (
+              <a href={project.linkedinUrl} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                <FaLinkedin /> LinkedIn
+              </a>
+            )}
           </div>
         </div>
       </div>

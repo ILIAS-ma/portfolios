@@ -1,11 +1,13 @@
 .container {
   padding: 2rem;
   text-align: center;
+  font-family: 'Arial', sans-serif; /* Changement de la police d'écriture */
 }
 
 .title {
   font-size: 2.5rem;
   margin-bottom: 2rem;
+  color: #000000; /* Couleur noire */
 }
 
 .filters {
@@ -18,15 +20,16 @@
 .filterButton {
   padding: 0.5rem 1rem;
   border: none;
-  background-color: #f0f0f0;
+  background-color: #000000;
   cursor: pointer;
   transition: background-color 0.3s;
+  color: #000; /* Couleur noire */
 }
 
 .filterButton:hover,
 .filterButton.active {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #000; /* Couleur noire */
+  color: #fff; /* Couleur blanche */
 }
 
 .projectsGrid {
@@ -43,6 +46,7 @@
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
+  margin: 1rem; /* Ajout de la marge */
 }
 
 .projectCard:hover {
@@ -59,9 +63,21 @@
 .projectTitle {
   font-size: 1.25rem;
   margin: 1rem 0;
+  color: #000; /* Couleur noire */
 }
 
 .projectDescription {
   padding: 0 1rem 1rem;
-  color: #666;
+  color: #000; /* Couleur noire */
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .filterButton {
+    width: 100%;
+  }
 }

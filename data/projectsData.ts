@@ -1,3 +1,4 @@
+// Définition de l'interface pour les projets
 export interface Project {
   id: number;
   title: string;
@@ -6,34 +7,44 @@ export interface Project {
   slug: string;
   category: string;
   details: string;
+  githubUrl?: string;
+  linkedinUrl?: string;
+  liveUrl?: string;
 }
 
+// Tableau de projets
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'Projet 1',
-    description: 'Description du Projet 1',
+    title: 'Réplique du site Nike',
+    description: 'J\'ai réalisé une réplique du site web de Nike pour tester mes connaissances en développement frontend. Ce projet m\'a permis de mettre en pratique mes compétences en HTML, CSS et JavaScript.',
     imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800&q=80',
     slug: 'projet-1',
     category: 'Web',
-    details: 'Détails du Projet 1...',
+    details: 'Technologies utilisées : HTML, CSS, JavaScript',
+    linkedinUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7251542001324552193/',
   },
   {
     id: 2,
-    title: 'Projet 2',
-    description: 'Description du Projet 2',
+    title: 'CRUD pour Brabus',
+    description: 'J\'ai développé un système de gestion de contenu (CRUD) pour le site web de Brabus. Ce projet m\'a permis de mettre en pratique mes compétences en développement backend et en base de données. Les utilisateurs peuvent se connecter en tant qu\'administrateurs ou utilisateurs pour créer, modifier, supprimer et mettre à jour des posts.',
     imageUrl: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800&q=80',
     slug: 'projet-2',
     category: 'Mobile',
-    details: 'Détails du Projet 2...',
+    details: 'Technologies utilisées : SQL, PHP, CSS, HTML',
+    githubUrl: 'https://github.com/ILIAS-ma/sql-brabus',
+    linkedinUrl: 'https://www.linkedin.com/posts/ilias-bounabat_webdevelopment-sqlsecurity-automobile-activity-7259436837834801153-M4dK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDMyLsBP7dquBWqcnR2PZJRl6dmeZ5Zazo',
   },
   {
     id: 3,
-    title: 'Projet 3',
-    description: 'Description du Projet 3',
+    title: 'Convertisseur de devise',
+    description: 'J\'ai créé un convertisseur de devise en utilisant une API pour récupérer les taux de change en temps réel. Ce projet m\'a permis de mettre en pratique mes compétences en développement frontend et en utilisation d\'API.',
     imageUrl: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800&q=80',
     slug: 'projet-3',
     category: 'Design',
-    details: 'Détails du Projet 3...',
+    details: 'Technologies utilisées : JavaScript, API',
+    githubUrl: 'https://github.com/ILIAS-ma/currency-converter',
+    linkedinUrl: 'https://www.linkedin.com/posts/ilias-bounabat_git-daezveloppementcollaboratif-gestiondeprojet-activity-7244763351598211072-9ICm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDMyLsBP7dquBWqcnR2PZJRl6dmeZ5Zazo',
+    
   },
 ];

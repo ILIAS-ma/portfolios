@@ -65,7 +65,6 @@ const NavBar: React.FC = () => {
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.navbarBrand}>
-        {/* Correction du Link pour n'avoir qu'un seul enfant */}
         <Link href="/" legacyBehavior>
           <a>Mon Portfolio</a>
         </Link>
@@ -74,7 +73,6 @@ const NavBar: React.FC = () => {
       <ul className={styles.navbarLinks}>
         {menuItems.map((item) => (
           <li key={item.id}>
-            {/* S'assurer que chaque Link n'a qu'un seul enfant */}
             <Link href={`#${item.id}`} legacyBehavior>
               <a 
                 className={activeLink === item.id ? styles.active : ''}
@@ -133,7 +131,6 @@ const NavBar: React.FC = () => {
                 transition={{ delay: isOpen ? index * 0.1 : 0 }}
                 style={{ "--index": index } as React.CSSProperties}
               >
-                {/* S'assurer que chaque Link n'a qu'un seul enfant */}
                 <Link href={`#${item.id}`} legacyBehavior>
                   <a onClick={(e) => scrollToSection(item.id, e)}>
                     {item.label}

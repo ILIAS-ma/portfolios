@@ -38,8 +38,8 @@ const ContactForm: React.FC = () => {
     <div className={styles.contactFormContainer}>
       <AnimateOnScroll animation="slideRight">
         <div className={styles.contactInfo}>
-          <h1 className={styles.contactFormTitle}>Vous souhaitez me contacter ?</h1>
-          <p>Envoyez-moi un email et je vous répondrai dès que possible.</p>
+        <h1 className={styles.contactFormTitle}>Contactez-moi</h1>
+        <p>Si vous avez des questions, des commentaires ou des suggestions, n'hésitez pas à m'envoyer un email. Je serai ravi de vous répondre dès que possible.</p>
         </div>
       </AnimateOnScroll>
       
