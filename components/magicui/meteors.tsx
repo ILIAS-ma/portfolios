@@ -1,4 +1,3 @@
-// Meteors.tsx
 "use client";
 
 import { cn } from "@/lib/utils"; // Importez la fonction cn depuis utils.ts
@@ -47,12 +46,12 @@ export const Meteors = ({
           key={idx}
           style={{ ...style }}
           className={cn(
-            "pointer-events-none absolute size-3 rotate-[var(--angle)] animate-meteor rounded-full bg-white shadow-[0_0_0_2px_#ffffff80]",
+            "pointer-events-none absolute size-0.5 rotate-[var(--angle)] animate-meteor rounded-full bg-zinc-500 shadow-[0_0_0_1px_#ffffff10]",
             className, // Ajoute className s'il est fourni
           )}
         >
           {/* Meteor Tail */}
-          <div className="pointer-events-none absolute top-1/2 z-0 h-[3px] w-[150px] -translate-y-1/2 bg-gradient-to-r from-white to-transparent" />
+          <div className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2 bg-gradient-to-r from-zinc-500 to-transparent" />
         </span>
       ))}
     </>

@@ -1,92 +1,106 @@
 /* Conteneur global */
 .container {
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: black;
-  }
-  
-  .description {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    color: #555;
-  }
-  
-  /* Timeline */
+  padding: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.description {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+  margin: 0 auto;
+  max-width: 600px;
+  border-left: 3px solid #000; /* Ligne verticale noire */
+}
+
+.timelineItem {
+  position: relative;
+  padding: 1.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.timelineItem::before {
+  /* Point rond qui représente l'événement */
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: -10px;
+  width: 16px;
+  height: 16px;
+  background-color: #000; /* Point noir */
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timelineDate {
+  position: absolute;
+  top: 0;
+  left: -120px;
+  width: 100px;
+  text-align: right;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.timelineContent {
+  margin-left: 20px;
+  padding: 1rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  background: #fff; /* Fond blanc */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.timelineContent h2 {
+  font-size: 1.5rem;
+  color: black;
+  margin: 0;
+}
+
+.timelineContent p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0 0;
+}
+
+.timelineContent:hover {
+  background-color: #000; /* Passe en noir au hover */
+  color: #fff; /* Texte blanc sur fond noir */
+  transform: scale(1.05); /* Légère augmentation de la taille */
+}
+
+@media (max-width: 768px) {
   .timeline {
-    position: relative;
-    padding: 2rem 0;
-    margin: 0 auto;
-    max-width: 600px;
-    border-left: 3px solid #000; /* Ligne verticale noire */
+    border-left: 2px solid #000; /* Ligne plus fine sur mobile */
   }
-  
+
   .timelineItem {
-    position: relative;
-    padding: 1.5rem 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .timelineItem::before {
-    /* Point rond qui représente l'événement */
-    content: "";
-    position: absolute;
-    top: 0.5rem;
-    left: -10px;
-    width: 16px;
-    height: 16px;
-    background-color: #000; /* Point noir */
-    border-radius: 50%;
-    z-index: 1;
-  }
-  
-  .timelineContent {
-    margin-left: 20px;
     padding: 1rem;
-    border: 2px solid black;
-    border-radius: 8px;
-    background: #fff; /* Fond blanc */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile */
-    transition: background-color 0.3s ease, transform 0.3s ease;
   }
-  
+
+  .timelineDate {
+    left: -90px;
+    width: 80px;
+  }
+
   .timelineContent h2 {
-    font-size: 1.5rem;
-    color: black;
-    margin: 0;
+    font-size: 1.25rem; /* Taille du texte réduite sur mobile */
   }
-  
+
   .timelineContent p {
-    font-size: 1rem;
-    color: #333;
-    margin: 0.5rem 0 0;
+    font-size: 0.9rem; /* Taille légèrement réduite */
   }
-  
-  .timelineContent:hover {
-    background-color: #000; /* Passe en noir au hover */
-    color: #fff; /* Texte blanc sur fond noir */
-    transform: scale(1.05); /* Légère augmentation de la taille */
-  }
-  
-  @media (max-width: 768px) {
-    .timeline {
-      border-left: 2px solid #000; /* Ligne plus fine sur mobile */
-    }
-  
-    .timelineItem {
-      padding: 1rem;
-    }
-  
-    .timelineContent h2 {
-      font-size: 1.25rem; /* Taille du texte réduite sur mobile */
-    }
-  
-    .timelineContent p {
-      font-size: 0.9rem; /* Taille légèrement réduite */
-    }
-  }
-  
+}
