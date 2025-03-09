@@ -5,12 +5,17 @@ import { projects } from '../data/projectsData';
 const Card3D: React.FC = () => {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
+    // Ce code ne s'exécutera que côté client
+    setIsBrowser(true);
     cardsRef.current = cardsRef.current.slice(0, projects.length);
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    if (!isBrowser) return; // Ne rien faire si l'exécution est côté serveur
+
     const card = cardsRef.current[index];
     if (!card) return;
 
@@ -28,6 +33,7 @@ const Card3D: React.FC = () => {
     const rotateY = ((x - centerX) / centerX) * 20;
     const rotateX = -((y - centerY) / centerY) * 20;
 
+    // Calcul de la distance et du soulèvement
     const distance = Math.sqrt(
       Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
     );
@@ -51,6 +57,7 @@ const Card3D: React.FC = () => {
       0 10px 20px rgba(0, 0, 0, 0.3)
     `;
 
+    // Application de l'effet de brillance
     const glareElement = card.querySelector(`.${styles.cardGlare}`);
     if (glareElement instanceof HTMLElement) {
       glareElement.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 80%)`;
@@ -59,6 +66,8 @@ const Card3D: React.FC = () => {
   };
 
   const handleMouseLeave = (index: number) => {
+    if (!isBrowser) return; // Ne rien faire si l'exécution est côté serveur
+    
     const card = cardsRef.current[index];
     if (!card) return;
 
@@ -79,7 +88,11 @@ const Card3D: React.FC = () => {
       {projects.map((project, index) => (
         <div
           key={project.id}
-          ref={(el) => (cardsRef.current[index] = el)}
+          ref={(el) => {
+            if (isBrowser) {
+              cardsRef.current[index] = el;
+            }
+          }}
           className={`${styles.card} ${activeIndex === index ? styles.active : ''}`}
           onMouseMove={(e) => handleMouseMove(e, index)}
           onMouseLeave={() => handleMouseLeave(index)}
