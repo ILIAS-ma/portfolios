@@ -33,7 +33,7 @@ const Skills: React.FC = () => {
   return (
     <div className={styles.skillsContainer}>
       <AnimateOnScroll animation="slideUp">
-        <h1>Compétences</h1>
+        <h1 className={styles.skillsTitle}>Compétences</h1>
       </AnimateOnScroll>
       
       <div className={styles.skillsCategories}>

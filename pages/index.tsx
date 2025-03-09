@@ -18,19 +18,25 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <NavBar /> {/* Déplacez NavBar ici */}
+      <NavBar />
       
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <Acceuil />
-        <AboutMe 
-          title="À propos de moi" 
-          description="Je suis un développeur passionné par la création d'applications web performantes et esthétiques. Avec plusieurs années d'expérience dans le développement front-end et back-end, je m'efforce de créer des solutions innovantes qui répondent aux besoins des utilisateurs. Ma passion pour l'apprentissage continu me pousse à me tenir au courant des dernières technologies et tendances dans le domaine du développement web." 
-          image="https://img.freepik.com/premium-vector/person-working-computer-vector-art-illustration-black-color-silhouette-8_666870-1242.jpg" 
-        />
+        <section id="home">
+          <Acceuil />
+        </section>
+        
+        <section id="about">
+          <AboutMe 
+            title="À propos de moi" 
+            description="Je suis un développeur passionné par la création d'applications web performantes et esthétiques. Avec plusieurs années d'expérience dans le développement front-end et back-end, je m'efforce de créer des solutions innovantes qui répondent aux besoins des utilisateurs. Ma passion pour l'apprentissage continu me pousse à me tenir au courant des dernières technologies et tendances dans le domaine du développement web." 
+            image="https://img.freepik.com/premium-vector/person-working-computer-vector-art-illustration-black-color-silhouette-8_666870-1242.jpg" 
+          />
+        </section>
+        
         <main className="bg-gray-900 min-h-screen">
           <AnimateOnScroll animation="slideUp">
             <section className="h-screen flex items-center justify-center">
@@ -40,20 +46,30 @@ export default function HomePage() {
             </section>
           </AnimateOnScroll>
           
-          <AnimateOnScroll animation="fadeIn" delay={0.2}>
-            <Skills />
-          </AnimateOnScroll>
+          <section id="skills">
+            <AnimateOnScroll animation="fadeIn" delay={0.2}>
+              <Skills />
+            </AnimateOnScroll>
+          </section>
           
-          <div className="py-12 bg-gray-900">
-            <h2 className="text-3xl font-bold text-center text-white mb-10">Mes Projets</h2>
-            <div className="container mx-auto">
-              <Card3D />
+          <section id="projects">
+            <div className="py-12 bg-gray-900">
+              <h2 className="text-3xl font-bold text-center text-white mb-10">Mes Projets</h2>
+              <div className="container mx-auto">
+                <Card3D />
+              </div>
             </div>
-          </div>
-          <Timeline />
-          <AnimateOnScroll animation="slideUp" delay={0.4}>
-            <ContactForm />
-          </AnimateOnScroll>
+          </section>
+          
+          <section id="education">
+            <Timeline />
+          </section>
+          
+          <section id="contact">
+            <AnimateOnScroll animation="slideUp" delay={0.4}>
+              <ContactForm />
+            </AnimateOnScroll>
+          </section>
         </main>
       </motion.div>
     </div>

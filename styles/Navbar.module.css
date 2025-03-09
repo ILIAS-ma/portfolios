@@ -1,70 +1,218 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background-color: #333;
-  color: #fff;
+  padding: 1.25rem 2.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+  padding: 0.75rem 2.5rem;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navbarBrand {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-right: 1rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.navbarBrand a {
+  text-decoration: none;
+  color: #000;
+  position: relative;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.navbarBrand a:hover {
+  transform: translateY(-2px);
+}
+
+.navbarBrand a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background: linear-gradient(90deg, #000, transparent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.navbarBrand a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbarLinks {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbarLinks li {
+  position: relative;
+}
+
+.navbarLinks a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.navbarLinks a:hover {
+  color: #000;
+}
+
+.navbarLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.navbarLinks a:hover::after,
+.navbarLinks a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbarToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.navbarToggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #000;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 .navbarMenu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 1rem;
-  background-color: #333;
-  color: #fff;
-  width: 100%;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
   height: 0;
+  opacity: 0;
+  visibility: hidden;
   overflow: hidden;
-  transition: height 0.3s ease-in-out;
 }
 
 .navbarMenu.isOpen {
   height: auto;
-  padding: 1rem;
+  opacity: 1;
+  visibility: visible;
 }
 
 .navbarMenu ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .navbarMenu li {
-  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  transition-delay: calc(0.05s * var(--index, 0));
+}
+
+.isOpen li {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .navbarMenu a {
-  color: #fff;
   text-decoration: none;
-}
-
-.navbarToggle {
-  display: none;
-  cursor: pointer;
-}
-
-.navbarToggle span {
+  color: #000;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
   display: block;
-  width: 20px;
-  height: 2px;
-  background-color: #fff;
-  margin-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+.navbarMenu a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateX(5px);
 }
 
 @media (max-width: 768px) {
-  .navbarMenu {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+  
+  .navbarLinks {
     display: none;
   }
-
+  
   .navbarToggle {
-    display: block;
+    display: flex;
+  }
+  
+  .navbarMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: 5rem 1.5rem 2rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  
+  .isOpen {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+  
+  .navbarBrand {
+    font-size: 1.5rem;
+  }
+  
+  .navbarMenu {
+    width: 85%;
   }
 }
