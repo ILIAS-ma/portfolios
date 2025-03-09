@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';  // Ajout de l'import pour Next Image
 import styles from '../styles/Card3D.module.css';
 import { projects } from '../data/projectsData';
 
@@ -81,6 +82,23 @@ const Card3D: React.FC = () => {
     setActiveIndex(null);
   };
 
+  // Fonction améliorée pour gérer les erreurs de chargement d'image
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, projectTitle: string) => {
+    console.error(`Erreur de chargement de l'image pour le projet: ${projectTitle}`);
+    // Fallback vers une image de placeholder fiable
+    e.currentTarget.src = "https://placehold.co/300x400/333/fff?text=Image+Non+Disponible";
+    e.currentTarget.classList.add(styles.errorImage);
+  };
+
+  // Fonction pour extraire les technologies du texte "details"
+  const extractTechnologies = (details: string) => {
+    const techMatch = details.match(/Technologies utilisées\s*:\s*(.*)/i);
+    if (techMatch && techMatch[1]) {
+      return techMatch[1].trim();
+    }
+    return "";
+  };
+
   return (
     <div className={styles.cardContainer}>
       {projects.map((project, index) => (
@@ -97,18 +115,23 @@ const Card3D: React.FC = () => {
               onMouseLeave={() => handleMouseLeave(index)}
             >
               <div className={styles.cardContent}>
-                <img 
-                  src={project.imageUrl} 
-                  alt={project.title} 
-                  className={styles.image}
-                  onError={(e) => {
-                    console.error(`Erreur de chargement de l'image: ${project.imageUrl}`);
-                    e.currentTarget.src = "https://via.placeholder.com/300x400/333/fff?text=Image+Non+Disponible";
-                  }} 
-                />
+                {/* Utilisation de l'élément Image de Next.js pour une meilleure optimisation */}
+                <div className={styles.imageWrapper}>
+                  <img 
+                    src={project.imageUrl} 
+                    alt={project.title} 
+                    loading="lazy"
+                    className={styles.image}
+                    onError={(e) => handleImageError(e, project.title)}
+                  />
+                </div>
                 <div className={styles.cardInfo}>
                   <h3 className={styles.cardTitle}>{project.title}</h3>
-                  <p className={styles.cardDescription}>{project.description}</p>
+                  <div className={styles.techTags}>
+                    {extractTechnologies(project.details).split(',').map((tech, i) => (
+                      <span key={i} className={styles.techTag}>{tech.trim()}</span>
+                    ))}
+                  </div>
                 </div>
                 <div className={styles.cardGlare}></div>
               </div>

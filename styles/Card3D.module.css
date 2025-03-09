@@ -68,17 +68,18 @@
   border-radius: 10px;
 }
 
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 250px; /* Augmenté pour une image plus grande */
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  transform: translateZ(0); /* Corrigé pour éviter les problèmes de rendu */
-  transform-style: preserve-3d;
-  opacity: 0.8; /* Assombrit légèrement l'image pour un meilleur contraste avec le texte */
-}
-
-.cardInfo {
+  object-fit: cover; /* Assure que l'image remplit bien l'espace */
   position: absolute;
   bottom: 0;
   left: 0;
@@ -94,7 +95,7 @@
 .cardTitle {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
   color: #ffffff;
   transform: translateZ(40px); /* Effet de profondeur restauré */
 }
@@ -200,4 +201,22 @@
   60% { transform: perspective(1000px) rotateX(-1deg) rotateY(-2deg) translateZ(15px) translateY(-10px); }
   80% { transform: perspective(1000px) rotateX(0deg) rotateY(3deg) translateZ(5px) translateY(5px); }
   100% { transform: perspective(1000px) rotateX(2deg) rotateY(-1deg) translateZ(10px) translateY(0); }
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  justify-content: center;
+}
+
+.techTag {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
 }

@@ -1,35 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import styles from '../styles/Acceuil.module.css';
 import { FaArrowDown } from 'react-icons/fa';
 
 const Acceuil: React.FC = () => {
-  const [index, setIndex] = useState(0);
-  const words = [
-    'Je',
-    'conçois',
-    'et',
-    'développe',
-    'des',
-    'expériences',
-    'web',
-    'modernes',
-    ',',
-    'combinant',
-    'code',
-    'propre',
-    'et',
-    'design',
-    'intuitif'
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [words]);
-
+  // Remplacer l'animation mot par mot par une phrase complète
   const handleScrollDown = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -55,15 +30,8 @@ const Acceuil: React.FC = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
           className={styles.description}
         >
-          <motion.span
-            key={index}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-          >
-            {words[index]}
-          </motion.span>
+          {/* Texte fixe au lieu d'une animation de mots */}
+          Je conçois et développe des expériences web modernes, combinant code propre et design intuitif.
         </motion.p>
         <motion.button
           initial={{ opacity: 0, y: 20, scale: 0.5 }}

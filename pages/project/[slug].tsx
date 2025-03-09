@@ -5,6 +5,7 @@ import styles from '../../styles/Project.module.css';
 import NavBar from '../../components/nav-bar';
 import Footer from '../../components/footer';
 import { FaGithub, FaLinkedin, FaExternalLinkAlt } from 'react-icons/fa';
+import Head from 'next/head';
 
 const Project: React.FC = () => {
   const router = useRouter();
@@ -12,15 +13,28 @@ const Project: React.FC = () => {
   const project = projects.find(p => p.slug === slug);
 
   if (!project) {
-    return <p>Projet non trouvé</p>;
+    return <p>Chargement...</p>;
   }
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>{project.title} | Portfolio</title>
+        <meta name="description" content={project.description} />
+      </Head>
       <NavBar />
       <div className={styles.projectContent}>
         <div className={styles.imageContainer}>
-          <img src={project.imageUrl} alt={project.title} className={styles.image} />
+          <img 
+            src={project.imageUrl} 
+            alt={project.title}
+            loading="lazy" 
+            className={styles.image}
+            onError={(e) => {
+              console.error(`Erreur de chargement de l'image: ${project.imageUrl}`);
+              e.currentTarget.src = "https://placehold.co/600x400/333/fff?text=Image+Non+Disponible";
+            }}
+          />
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.title}>{project.title}</h1>
