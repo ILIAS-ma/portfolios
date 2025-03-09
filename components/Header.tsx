@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState('home');
@@ -52,20 +53,21 @@ export default function Header() {
           <ul className="flex space-x-8">
             {['hero', 'about', 'professional', 'skills', 'projects', 'contact'].map((item) => (
               <motion.li key={item}>
-                <a
-                  href={`#${item}`}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(item); }}
-                  className={`text-sm uppercase tracking-wider ${activeSection === item ? 'text-blue-400 font-medium' : 'text-gray-300 hover:text-white'}`}
-                >
-                  {item === 'hero' ? 'Accueil' : item}
-                  {activeSection === item && (
-                    <motion.div
-                      className="h-0.5 bg-blue-400 mt-1"
-                      layoutId="activeSection"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </a>
+                <Link href={`#${item}`} legacyBehavior>
+                  <a
+                    onClick={(e) => { e.preventDefault(); scrollToSection(item); }}
+                    className={`text-sm uppercase tracking-wider ${activeSection === item ? 'text-blue-400 font-medium' : 'text-gray-300 hover:text-white'}`}
+                  >
+                    {item === 'hero' ? 'Accueil' : item}
+                    {activeSection === item && (
+                      <motion.div
+                        className="h-0.5 bg-blue-400 mt-1"
+                        layoutId="activeSection"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                </Link>
               </motion.li>
             ))}
           </ul>
@@ -83,13 +85,14 @@ export default function Header() {
           <ul className="flex flex-col p-4 space-y-4">
             {['hero', 'about', 'professional', 'skills', 'projects', 'contact'].map((item) => (
               <li key={item}>
-                <a
-                  href={`#${item}`}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(item); }}
-                  className={`block px-4 py-2 text-sm uppercase tracking-wider ${activeSection === item ? 'text-blue-400 font-medium' : 'text-gray-300 hover:text-white'}`}
-                >
-                  {item === 'hero' ? 'Accueil' : item}
-                </a>
+                <Link href={`#${item}`} legacyBehavior>
+                  <a
+                    onClick={(e) => { e.preventDefault(); scrollToSection(item); }}
+                    className={`block px-4 py-2 text-sm uppercase tracking-wider ${activeSection === item ? 'text-blue-400 font-medium' : 'text-gray-300 hover:text-white'}`}
+                  >
+                    {item === 'hero' ? 'Accueil' : item}
+                  </a>
+                </Link>
               </li>
             ))}
           </ul>

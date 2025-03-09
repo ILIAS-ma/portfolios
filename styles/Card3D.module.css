@@ -20,7 +20,7 @@
   transform: perspective(1000px);
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  background-color: #1a1a1a;
   will-change: transform, box-shadow;
   margin: 0 10px;
   animation: randomMove 15s infinite alternate ease-in-out;
@@ -69,8 +69,9 @@
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-  transform: translateZ(20px);
+  transform: translateZ(0); /* Corrigé pour éviter les problèmes de rendu */
   transform-style: preserve-3d;
+  opacity: 0.8; /* Assombrit légèrement l'image pour un meilleur contraste avec le texte */
 }
 
 .cardInfo {
@@ -79,23 +80,24 @@
   left: 0;
   width: 100%;
   padding: 20px;
-  background-color: rgba(240, 240, 240, 0.9);
+  background-color: rgba(10, 10, 10, 0.95); /* Fond plus opaque pour meilleure lisibilité */
   border-radius: 0 0 10px 10px;
-  transform: translateZ(30px); /* Effet de profondeur restauré */
+  transform: translateZ(1px); /* Légère avancée pour être sûr qu'il est au-dessus de l'image */
   transform-style: preserve-3d;
+  z-index: 2;
 }
 
 .cardTitle {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333;
+  color: #ffffff;
   transform: translateZ(40px); /* Effet de profondeur restauré */
 }
 
 .cardDescription {
   font-size: 14px;
-  color: #666;
+  color: #cccccc;
   transform: translateZ(30px); /* Effet de profondeur restauré */
 }
 

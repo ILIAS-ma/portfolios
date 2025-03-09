@@ -5,7 +5,9 @@ import ContactForm from '../components/ContactForm';
 import Skills from '../components/Skills';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 import { motion } from 'framer-motion';
-import styles from '../styles/globals.css';
+import Timeline from '../components/Timeline';
+import Acceuil from '../components/Acceuil';
+import NavBar from '../components/nav-bar';
 
 export default function HomePage() {
   return (
@@ -16,11 +18,14 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
+      <NavBar /> {/* Déplacez NavBar ici */}
+      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
+        <Acceuil />
         <AboutMe 
           title="À propos de moi" 
           description="Je suis un développeur passionné par la création d'applications web performantes et esthétiques. Avec plusieurs années d'expérience dans le développement front-end et back-end, je m'efforce de créer des solutions innovantes qui répondent aux besoins des utilisateurs. Ma passion pour l'apprentissage continu me pousse à me tenir au courant des dernières technologies et tendances dans le domaine du développement web." 
@@ -42,11 +47,10 @@ export default function HomePage() {
           <div className="py-12 bg-gray-900">
             <h2 className="text-3xl font-bold text-center text-white mb-10">Mes Projets</h2>
             <div className="container mx-auto">
-              {/* Utiliser simplement le composant Card3D qui affichera Projet 1, Projet 2, Projet 3 */}
               <Card3D />
             </div>
           </div>
-      
+          <Timeline />
           <AnimateOnScroll animation="slideUp" delay={0.4}>
             <ContactForm />
           </AnimateOnScroll>

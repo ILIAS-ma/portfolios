@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function HeroSection() {
   const [displayText, setDisplayText] = useState('');
@@ -63,15 +64,21 @@ export default function HeroSection() {
           </motion.button>
         </motion.div>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.8 }} className="mt-12 flex justify-center space-x-6">
-          <motion.a href="#" whileHover={{ y: -3, color: "#6e5dcf" }} className="text-2xl text-gray-400 transition-colors">
-            <FaGithub />
-          </motion.a>
-          <motion.a href="#" whileHover={{ y: -3, color: "#0077b5" }} className="text-2xl text-gray-400 transition-colors">
-            <FaLinkedin />
-          </motion.a>
-          <motion.a href="#" whileHover={{ y: -3, color: "#1DA1F2" }} className="text-2xl text-gray-400 transition-colors">
-            <FaTwitter />
-          </motion.a>
+          <Link href="#" legacyBehavior>
+            <motion.a whileHover={{ y: -3, color: "#6e5dcf" }} className="text-2xl text-gray-400 transition-colors">
+              <FaGithub />
+            </motion.a>
+          </Link>
+          <Link href="#" legacyBehavior>
+            <motion.a whileHover={{ y: -3, color: "#0077b5" }} className="text-2xl text-gray-400 transition-colors">
+              <FaLinkedin />
+            </motion.a>
+          </Link>
+          <Link href="#" legacyBehavior>
+            <motion.a whileHover={{ y: -3, color: "#1DA1F2" }} className="text-2xl text-gray-400 transition-colors">
+              <FaTwitter />
+            </motion.a>
+          </Link>
         </motion.div>
       </div>
     </section>

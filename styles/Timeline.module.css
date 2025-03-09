@@ -1,0 +1,308 @@
+.timelineContainer {
+  padding: 4rem 2rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 16px;
+
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.timelineContainer:before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,0,0,0.05) 0%, rgba(255,255,255,0) 70%);
+}
+
+.timelineContainer:after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: -50px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, rgba(255,255,255,0) 70%);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+  color: #000000;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sectionTitle:after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 6px;
+  background: linear-gradient(90deg, #000000, rgba(0,0,0,0.5));
+  margin: 1rem auto 0;
+  border-radius: 3px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timelineLine {
+  position: absolute;
+  height: 100%;
+  width: 6px;
+  background-color: rgba(0,0,0,0.1);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.timelineProgress {
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  background: linear-gradient(to bottom, #000, #333);
+  top: 0;
+  left: 0;
+  animation: progressLine 3s forwards ease-out;
+}
+
+@keyframes progressLine {
+  to {
+    height: 100%;
+  }
+}
+
+.timelineItem {
+  margin-bottom: 5rem;
+  position: relative;
+  min-height: 120px;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelinePoint {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pointOuter {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulsePoint 3s infinite;
+}
+
+.pointInner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+@keyframes pulsePoint {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.timelineContent {
+  width: calc(50% - 50px);
+  position: relative;
+}
+
+.itemRight .timelineContent {
+  margin-left: auto;
+}
+
+.contentInner {
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-left: 5px solid #000;
+  transition: all 0.3s ease;
+}
+
+.itemLeft .contentInner {
+  border-left: none;
+  border-right: 5px solid #000;
+}
+
+.contentInner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.itemLeft .contentInner:before,
+.itemRight .contentInner:before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  transform: rotate(45deg);
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.05);
+}
+
+.itemRight .contentInner:before {
+  left: -10px;
+}
+
+.itemLeft .contentInner:before {
+  right: -10px;
+}
+
+.itemTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #000000;
+  position: relative;
+  display: inline-block;
+}
+
+.itemTitle:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #000;
+}
+
+.periodTag {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.periodDate {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.periodTitle {
+  font-size: 0.8rem;
+  color: rgba(0,0,0,0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: rgba(0,0,0,0.8);
+}
+
+.list li {
+  margin-bottom: 0.7rem;
+  position: relative;
+}
+
+.list li:before {
+  content: '•';
+  position: absolute;
+  left: -1rem;
+  color: #000;
+  font-weight: bold;
+}
+
+@media (max-width: 992px) {
+  .timelineLine {
+    left: 40px;
+  }
+
+  .timelinePoint {
+    left: 40px;
+  }
+
+  .timelineItem {
+    margin-bottom: 4rem;
+  }
+
+  .timelineContent {
+    width: calc(100% - 90px);
+    margin-left: 90px !important;
+  }
+
+  .itemLeft .contentInner:before,
+  .itemRight .contentInner:before {
+    left: -10px;
+    right: auto;
+  }
+  
+  .itemLeft .contentInner {
+    border-right: none;
+    border-left: 5px solid #000;
+  }
+}
+
+@media (max-width: 576px) {
+  .timelineContainer {
+    padding: 3rem 1rem;
+    margin: 2rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+
+  .contentInner {
+    padding: 1.5rem;
+  }
+
+  .itemTitle {
+    font-size: 1.3rem;
+  }
+  
+  .list li {
+    font-size: 0.95rem;
+  }
+}

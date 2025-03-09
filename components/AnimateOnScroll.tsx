@@ -12,7 +12,7 @@ interface AnimateOnScrollProps {
   once?: boolean;
 }
 
-export const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
+const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
   children,
   animation = 'fadeIn',
   duration = 0.6,
