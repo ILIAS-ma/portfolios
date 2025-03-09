@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from '../styles/Card3D.module.css';
 import { projects } from '../data/projectsData';
 
@@ -8,13 +9,12 @@ const Card3D: React.FC = () => {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
-    // Ce code ne s'exécutera que côté client
     setIsBrowser(true);
     cardsRef.current = cardsRef.current.slice(0, projects.length);
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
-    if (!isBrowser) return; // Ne rien faire si l'exécution est côté serveur
+    if (!isBrowser) return;
 
     const card = cardsRef.current[index];
     if (!card) return;
@@ -33,7 +33,6 @@ const Card3D: React.FC = () => {
     const rotateY = ((x - centerX) / centerX) * 20;
     const rotateX = -((y - centerY) / centerY) * 20;
 
-    // Calcul de la distance et du soulèvement
     const distance = Math.sqrt(
       Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
     );
@@ -57,7 +56,6 @@ const Card3D: React.FC = () => {
       0 10px 20px rgba(0, 0, 0, 0.3)
     `;
 
-    // Application de l'effet de brillance
     const glareElement = card.querySelector(`.${styles.cardGlare}`);
     if (glareElement instanceof HTMLElement) {
       glareElement.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 80%)`;
@@ -66,7 +64,7 @@ const Card3D: React.FC = () => {
   };
 
   const handleMouseLeave = (index: number) => {
-    if (!isBrowser) return; // Ne rien faire si l'exécution est côté serveur
+    if (!isBrowser) return;
     
     const card = cardsRef.current[index];
     if (!card) return;
@@ -86,34 +84,37 @@ const Card3D: React.FC = () => {
   return (
     <div className={styles.cardContainer}>
       {projects.map((project, index) => (
-        <div
-          key={project.id}
-          ref={(el) => {
-            if (isBrowser) {
-              cardsRef.current[index] = el;
-            }
-          }}
-          className={`${styles.card} ${activeIndex === index ? styles.active : ''}`}
-          onMouseMove={(e) => handleMouseMove(e, index)}
-          onMouseLeave={() => handleMouseLeave(index)}
-        >
-          <div className={styles.cardContent}>
-            <img 
-              src={project.imageUrl} 
-              alt={project.title} 
-              className={styles.image}
-              onError={(e) => {
-                console.error(`Erreur de chargement de l'image: ${project.imageUrl}`);
-                e.currentTarget.src = "https://via.placeholder.com/300x400/333/fff?text=Image+Non+Disponible";
-              }} 
-            />
-            <div className={styles.cardInfo}>
-              <h3 className={styles.cardTitle}>{project.title}</h3>
-              <p className={styles.cardDescription}>{project.description}</p>
+        <Link key={project.id} href={`/project/${project.slug}`} legacyBehavior>
+          <a className={styles.projectLink}>
+            <div
+              ref={(el) => {
+                if (isBrowser) {
+                  cardsRef.current[index] = el;
+                }
+              }}
+              className={`${styles.card} ${activeIndex === index ? styles.active : ''}`}
+              onMouseMove={(e) => handleMouseMove(e, index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+            >
+              <div className={styles.cardContent}>
+                <img 
+                  src={project.imageUrl} 
+                  alt={project.title} 
+                  className={styles.image}
+                  onError={(e) => {
+                    console.error(`Erreur de chargement de l'image: ${project.imageUrl}`);
+                    e.currentTarget.src = "https://via.placeholder.com/300x400/333/fff?text=Image+Non+Disponible";
+                  }} 
+                />
+                <div className={styles.cardInfo}>
+                  <h3 className={styles.cardTitle}>{project.title}</h3>
+                  <p className={styles.cardDescription}>{project.description}</p>
+                </div>
+                <div className={styles.cardGlare}></div>
+              </div>
             </div>
-            <div className={styles.cardGlare}></div>
-          </div>
-        </div>
+          </a>
+        </Link>
       ))}
     </div>
   );

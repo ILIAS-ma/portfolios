@@ -9,6 +9,10 @@
   background-color: transparent;
 }
 
+.projectLink {
+  text-decoration: none;
+}
+
 .card {
   position: relative;
   width: 300px;
