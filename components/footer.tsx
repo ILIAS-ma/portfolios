@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import styles from '../styles/Footer.module.css';
+import styles from '../styles/footer.module.css';
 
 const Footer: React.FC = () => {
   return (
