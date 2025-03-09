@@ -14,7 +14,7 @@ const ContactForm: React.FC = () => {
     const templateParams = {
       from_name: name,
       to_name: 'Votre nom',
-      message_html: message,
+      message: message, // Assurez-vous que le nom du champ correspond à celui du modèle EmailJS
       reply_to: email,
     };
 
@@ -38,8 +38,8 @@ const ContactForm: React.FC = () => {
     <div className={styles.contactFormContainer}>
       <AnimateOnScroll animation="slideRight">
         <div className={styles.contactInfo}>
-        <h1 className={styles.contactFormTitle}>Contactez-moi</h1>
-        <p>Si vous avez des questions, des commentaires ou des suggestions, n'hésitez pas à m'envoyer un email. Je serai ravi de vous répondre dès que possible.</p>
+          <h1 className={styles.contactFormTitle}>Contactez-moi</h1>
+          <p>Si vous avez des questions, des commentaires ou des suggestions, n'hésitez pas à m'envoyer un email. Je serai ravi de vous répondre dès que possible.</p>
         </div>
       </AnimateOnScroll>
       

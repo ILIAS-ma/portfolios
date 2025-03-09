@@ -57,7 +57,7 @@ const NavBar: React.FC = () => {
     { id: 'home', label: 'Accueil' },
     { id: 'about', label: 'À propos' },
     { id: 'projects', label: 'Projets' },
-    { id: 'education', label: 'Scolarité' },
+    { id: 'education', label: 'Parcours' }, // Renommé de 'Scolarité' à 'Parcours'
     { id: 'skills', label: 'Compétences' },
     { id: 'contact', label: 'Contact' }
   ];
