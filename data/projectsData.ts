@@ -69,7 +69,7 @@ export const projects: Project[] = [
   title: 'Plateforme Football – Ensemble On Est Plus Fort',
   description:
     "Dans le cadre de mon stage au sein de l'association Ensemble On Est Plus Fort (Drancy), j'ai participé à la conception d'une plateforme dédiée aux joueurs de football. Elle permet l'inscription, le suivi des performances et la gestion complète via un espace administrateur.",
-  imageUrl: image4.src, // ✅ utilisation de l'image locale
+  imageUrl: '/images/image4.png',// ✅ utilisation de l'image locale
   slug: 'projet-4-football',
   category: 'Web',
   details:
@@ -83,7 +83,7 @@ export const projects: Project[] = [
   title: 'Site Journalisme Sportif – Ensemble On Est Plus Fort',
   description:
     "Toujours dans le cadre de mon stage à l'association Ensemble On Est Plus Fort, j'ai travaillé sur un site pour stagiaires en journalisme sportif. Il offre la possibilité de publier des articles, intégrer du contenu multimédia et gérer les publications via un espace admin.",
-  imageUrl: image5.src, // ✅ utilisation de l'image locale
+  imageUrl: '/images/image5.png',
   slug: 'projet-5-journalisme',
   category: 'Web',
   details:
