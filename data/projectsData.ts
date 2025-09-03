@@ -64,35 +64,32 @@ export const projects: Project[] = [
       'https://www.linkedin.com/posts/ilias-bounabat_git-daezveloppementcollaboratif-gestiondeprojet-activity-7244763351598211072-9ICm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDMyLsBP7dquBWqcnR2PZJRl6dmeZ5Zazo',
   },
   // 🚀 Nouveau projet 1 (plateforme football)
-  {
-    id: 4,
-    title: 'Plateforme Football – Ensemble On Est Plus Fort',
-    description:
-      "Dans le cadre de mon stage au sein de l'association Ensemble On Est Plus Fort (Drancy), j'ai participé à la conception d'une plateforme dédiée aux joueurs de football. Elle permet l'inscription, le suivi des performances et la gestion complète via un espace administrateur.",
-    imageUrl:
-      'https://placehold.co/600x400/0f172a/ffffff?text=Plateforme+Football', // à remplacer si tu as un vrai visuel
-    slug: 'projet-4-football',
-    category: 'Web',
-    details:
-      'Technologies utilisées : PHP (MVC), Node.js, MySQL, HTML, CSS, JavaScript, Agile',
-    liveUrl: 'https://pfefootball.site/',
-    linkedinUrl:
-      'https://www.linkedin.com/feed/update/urn:li:activity:7345334033595162626/',
-  },
-  // 🚀 Nouveau projet 2 (site journalisme sportif)
-  {
-    id: 5,
-    title: 'Site Journalisme Sportif – Ensemble On Est Plus Fort',
-    description:
-      "Toujours dans le cadre de mon stage à l'association Ensemble On Est Plus Fort, j'ai travaillé sur un site pour stagiaires en journalisme sportif. Il offre la possibilité de publier des articles, intégrer du contenu multimédia et gérer les publications via un espace admin.",
-    imageUrl:
-      'https://placehold.co/600x400/1a1a1a/ffffff?text=Journalisme+Sportif', // à remplacer si tu as un vrai visuel
-    slug: 'projet-5-journalisme',
-    category: 'Web',
-    details:
-      'Technologies utilisées : PHP (MVC), Node.js, MySQL, HTML, CSS, JavaScript, Agile',
-    liveUrl: 'https://www.passe-d.net/',
-    linkedinUrl:
-      'https://www.linkedin.com/feed/update/urn:li:activity:7345334033595162626/',
-  },
+{
+  id: 4,
+  title: 'Plateforme Football – Ensemble On Est Plus Fort',
+  description:
+    "Dans le cadre de mon stage au sein de l'association Ensemble On Est Plus Fort (Drancy), j'ai participé à la conception d'une plateforme dédiée aux joueurs de football. Elle permet l'inscription, le suivi des performances et la gestion complète via un espace administrateur.",
+  imageUrl: image4.src, // ✅ utilisation de l'image locale
+  slug: 'projet-4-football',
+  category: 'Web',
+  details:
+    'Technologies utilisées : PHP (MVC), Node.js, MySQL, HTML, CSS, JavaScript, Agile',
+  liveUrl: 'https://pfefootball.site/',
+  linkedinUrl:
+    'https://www.linkedin.com/feed/update/urn:li:activity:7345334033595162626/',
+},
+{
+  id: 5,
+  title: 'Site Journalisme Sportif – Ensemble On Est Plus Fort',
+  description:
+    "Toujours dans le cadre de mon stage à l'association Ensemble On Est Plus Fort, j'ai travaillé sur un site pour stagiaires en journalisme sportif. Il offre la possibilité de publier des articles, intégrer du contenu multimédia et gérer les publications via un espace admin.",
+  imageUrl: image5.src, // ✅ utilisation de l'image locale
+  slug: 'projet-5-journalisme',
+  category: 'Web',
+  details:
+    'Technologies utilisées : PHP (MVC), Node.js, MySQL, HTML, CSS, JavaScript, Agile',
+  liveUrl: 'https://www.passe-d.net/',
+  linkedinUrl:
+    'https://www.linkedin.com/feed/update/urn:li:activity:7345334033595162626/',
+},
 ];
